@@ -22,15 +22,6 @@ I Love You Forever
                 亲爱的大春卷：
             </div>
             <div id="code">
-                <?php
-                    //https://api.vvhan.com/api/love
-                    //https://api.lovelive.tools/api/sweetNothings
-                    $a = file_get_contents("https://api.vvhan.com/api/love");
-                    if($a)
-                        echo $a;
-                    else
-                        echo "获取数据失败，请刷新网页！";
-                ?>
             </div>
         </div>
     </div>
@@ -71,7 +62,13 @@ I Love You Forever
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
 				var text = xmlhttp.responseText;
-				document.getElementById("code").innerHTML = text;
+				console.log(text);
+				if (text.substr(-1) != '。' && text.substr(-1) != '！'){
+					console.log(text.substr(-1));
+					text += '。';
+				}
+				console.log(text);
+				document.getElementById("code").innerHTML = text+"生日快乐！";
 				document.getElementById("code").typewriter();
 			}
 		}
